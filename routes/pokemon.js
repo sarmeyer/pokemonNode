@@ -41,5 +41,10 @@ router.post('/:id', function(req, res, next) {
     })
   })
 })
+router.get('/:id/delete', function(req,res,next){
+  Pokemon.destroy(req.params.id).then(function(){
+    res.redirect('/pokemon')
+  })
+})
 
 module.exports = router;
