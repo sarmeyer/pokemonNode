@@ -8,9 +8,12 @@ router.get('/', function(req, res, next) {
     res.render('pokemon/index', {pokemon: pokemon.rows});
   })
 });
-router.get('/:id', function(req, res, next) {
-  Pokemon.show(req.params.id).then(function(pokemon){
-    res.render('pokemon/', {pokemon: pokemon.rows[0]});
+router.get('/new', function(req,res,next){
+  res.render('pokemon/new')
+})
+router.post('/', function(req, res, next) {
+  Pokemon.create(req.params.id).then(function(pokemon){
+    res.redirect('/');
   })
 });
 
