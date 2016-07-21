@@ -1,0 +1,23 @@
+<%- contentFor('body') %>
+
+    <div class="container">
+        <h1>Edit Pokemon</h1>
+        <form action="/pokemon" method="post">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input class="form-control" type="text" name="name" value=<%=pokemon.name %>>
+                <label for="cp">Combat Power</label>
+                <input class="form-control" type="text" name="cp" value=<%=pokemon.cp %>>
+                <label for="in_gym">In Gym?</label>
+                <input class="form-control" type="text" name="in_gym" value=<%=pokemon.in_gym %>>
+            </div>
+            <select class="trainers">
+               <%
+                   for (var i = 0; i < trainers.length; i++){
+                       %><option value="<%= trainers[i].name %>"><%= trainers[i].name %><%
+                   }
+               %>
+           </select>
+            <button class="btn btn-primary" type="submit">Submit!</button>
+        </form>
+    </div>

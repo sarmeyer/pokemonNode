@@ -23,5 +23,14 @@ router.get('/:id', function(req,res,next){
     })
   })
 })
+router.get('/:id/edit', function(req,res,next){
+  Pokemon.show(req.params.id).then(function(pokemon){
+    Pokemon.showTrainers().then(function(trainers){
+      console.log('*************');
+      console.log(trainers.rows);
+      res.render('pokemon/edit', {pokemon: pokemon.rows[0], trainers: trainers.rows})
+    })
+  })
+})
 
 module.exports = router;
