@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var knex = require('knex');
 var Pokemon = require('../lib/queries');
 
 /* GET users listing. */
@@ -51,8 +52,10 @@ router.get('/:id/delete', function(req,res,next){
 router.get('/assign/:id', function(req,res,next){
   if(req.cookies.p1) {
     res.cookie('p2', req.params.id);
+    knex.raw(`UPDATE pokemon SET in_gym = NOT in_gym WHERE id=${req.params.id}`)
     } else {
-      res.cookie('p1', req.params.id);
+    res.cookie('p1', req.params.id);
+    knex.raw(`UPDATE pokemon SET in_gym = NOT in_gym WHERE id=${req.params.id}`)
     }
     res.redirect('/');
   })
@@ -60,5 +63,12 @@ router.get('/remove/:id', function(req,res,next){
   if(req.cookies.p1 === req.params.id || req.cookies.p2 === req.params.id){
     res.clearCookie();
   }
+    res.redirect('/');
 })
+// router.post('/remove/:id', function(req,res,next){
+//   Pokemon.leaveGym(req.params.id).then(function(req,res,next){
+//     res.redirect('/')
+//   })
+// })
+
 module.exports = router;
