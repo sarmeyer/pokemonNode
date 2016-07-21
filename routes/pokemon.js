@@ -33,8 +33,6 @@ router.get('/:id/edit', function(req,res,next){
   })
 })
 router.post('/:id', function(req, res, next) {
-  console.log('*******************');
-  console.log(req.body.trainers_names);
   Pokemon.edit(req.params.id, req.body).then(function(){
     Pokemon.editTrainer(req.params.id, req.body.trainers_names).then(function(){
       Pokemon.show(req.params.id).then(function(pokemon){
@@ -51,17 +49,16 @@ router.get('/:id/delete', function(req,res,next){
   })
 })
 router.get('/assign/:id', function(req,res,next){
-  if(!res.cookie.p1) {
-    res.cookie('p1', req.params.id);
-      res.redirect('/');
-  } else if(!res.cookie.p2){
+  if(req.cookies.p1) {
     res.cookie('p2', req.params.id);
-    res.redirect('/pokemon')
+    } else {
+      res.cookie('p1', req.params.id);
     }
+    res.redirect('/');
   })
 router.get('/remove/:id', function(req,res,next){
-  if(res.cookie.p1 === req.params.id || res.cookie.p2 === req.params.id){
-    res.clearCookie()
+  if(req.cookies.p1 === req.params.id || req.cookies.p2 === req.params.id){
+    res.clearCookie();
   }
 })
 module.exports = router;
