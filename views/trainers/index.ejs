@@ -2,15 +2,35 @@
 <!-- Everything below line 3 feel free to delete and or build on. This is just sample data -->
 <%- contentFor('body') %>
 
-<span style="color:white">Trainers home page.</span>
+    <div>
+        <h1>Showing All Trainers</h1>
+        <a class='btn btn-primary' href="/trainers/new">Add a New Trainer</a>
+        <% if (locals.trainers) { %>
+            <table class='table table-hover'>
+                <thead>
+                    <th>Id</th>
+                    <th>Name</th>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i<trainers.length; i++) { %>
+                        <tr>
+                            <td>
+                                <%= trainers[i].id %>
+                            </td>
+                            <td>
+                                <a href='/trainers/<%= trainers[i].id %>'>
+                                    <%= trainers[i].name %>
+                                </a>
+                            </td>
+                            <td>
+                                <a class='btn btn-success' href="/trainers/<%= trainers[i].id %>/edit">Edit</a>
+                            </td>
+                            <td>
+                                <a class='btn btn-danger' href="/trainers/<%= trainers[i].id %>/delete">Delete</a>
+                            </td>
 
-<button type="button" name="button" id="add_new">+ Add New Trainer</button>
-
-<script type="text/javascript">
-   var btn = document.getElementById("add_new");
-   var passedInData = '<%= passedInData %>' ;
-   btn.addEventListener("click", function(){
-     alert("the button works, and we see "+passedInData);
-   })
-
-</script>
+                        </tr>
+                        <% } %>
+                </tbody>
+            </table>
+            <% } %>
