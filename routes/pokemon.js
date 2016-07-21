@@ -12,8 +12,8 @@ router.get('/new', function(req,res,next){
   res.render('pokemon/new')
 })
 router.post('/', function(req, res, next) {
-  Pokemon.create(req.params.id).then(function(pokemon){
-    res.redirect('/');
+  Pokemon.create(req.body).then(function(){
+    res.redirect('/pokemon');
   })
 });
 
