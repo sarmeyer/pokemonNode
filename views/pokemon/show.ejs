@@ -1,0 +1,13 @@
+<%- contentFor('body') %>
+<h1>Showing <%= pokemon.name %></h1>
+  <% if(locals.pokemon) { %>
+    <div class="well well-lg">
+      Id: <h2><%= pokemon.id %></h2>
+      Name: <h2><%= pokemon.name %></h2>
+      Trainer: <h2><%= trainer.name %></h2>
+      Combat Power: <h2><%= pokemon.cp %></h2>
+      In Gym? <h2><%= pokemon.in_gym %></h2>
+    </div>
+    <% } %>
+</body>
+</html>

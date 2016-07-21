@@ -10,11 +10,18 @@ router.get('/', function(req, res, next) {
 });
 router.get('/new', function(req,res,next){
   res.render('pokemon/new')
-})
+});
 router.post('/', function(req, res, next) {
   Pokemon.create(req.body).then(function(){
     res.redirect('/pokemon');
   })
 });
+router.get('/:id', function(req,res,next){
+  Pokemon.show(req.params.id).then(function(pokemon){
+    Pokemon.displayTrainer(pokemon.rows[0].trainer_id).then(function(trainer){
+      res.render('pokemon/show', {pokemon: pokemon.rows[0], trainer: trainer.rows[0]})
+    })
+  })
+})
 
 module.exports = router;
