@@ -42,6 +42,12 @@
                 <td>
                   <%= pokemon[i].in_gym %>
                 </td>
+                <td>
+                  <a class='btn btn-success' href="/pokemon/<%= pokemon.id %>/edit">Edit</a>
+                </td>
+                <td>
+                  <a class='btn btn-danger' href="/pokemon/<%= pokemon.id %>/delete">Delete</a>
+                </td>
               </tr>
               <% } %>
           </tbody>
