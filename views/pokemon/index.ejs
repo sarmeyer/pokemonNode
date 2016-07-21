@@ -2,17 +2,50 @@
 <!-- Everything below line 3 feel free to delete and or build on. This is just sample data -->
 <%- contentFor('body') %>
 
-<span style="color:white">Pokemón home page.</span>
-
-
-
-<button type="button" name="button" id="add_new">+ Add New Pokemon</button>
-
-<script type="text/javascript">
-   var btn = document.getElementById("add_new");
-   var pokemon = '<%= pokemon %>' ;
-   btn.addEventListener("click", function(){
-     alert("the button works, and we see "+pokemon);
-   })
-
-</script>
+    <div>
+      <h1>Showing All Pokemon</h1>
+      <a href="/pokemon/new">Add a New Pokemon</a>
+      <% if (locals.pokemon) { %>
+        <table class='table'>
+          <thead>
+            <th>
+              Id
+            </th>
+            <th>
+              Name
+            </th>
+            <th>
+              Trainer ID
+            </th>
+            <th>
+              Combat Power
+            </th>
+            <th>
+              In Gym?
+            </th>
+          </thead>
+          <tbody>
+            <% for(var i=0; i<pokemon.length; i++) { %>
+              <tr>
+                <td>
+                  <%= pokemon[i].id %>
+                </td>
+                <td>
+                  <a href='/pokemon/<%= pokemon[i].id %>'><%= pokemon[i].name %></a>
+                </td>
+                <td>
+                  <%= pokemon[i].trainer_id %>
+                </td>
+                <td>
+                  <%= pokemon[i].cp %>
+                </td>
+                <td>
+                  <%= pokemon[i].in_gym %>
+                </td>
+              </tr>
+              <% } %>
+          </tbody>
+        </table>
+        <% } %>
+  </body>
+</html>
