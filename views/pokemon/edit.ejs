@@ -2,16 +2,19 @@
 
     <div class="container">
         <h1>Edit Pokemon</h1>
-        <form action="/pokemon" method="post">
+        <h2 name="trainer_name"> Trainer Name: <%=trainer.name %>
+        <form action="/pokemon/<%= pokemon.id %>" method="post">
             <div class="form-group">
                 <label for="name">Name</label>
                 <input class="form-control" type="text" name="name" value=<%=pokemon.name %>>
+                <label for="trainer_id">Trainer Id</label>
+                <input class="form-control" type="text" name="trainer_id" value=<%=pokemon.trainer_id %>>
                 <label for="cp">Combat Power</label>
                 <input class="form-control" type="text" name="cp" value=<%=pokemon.cp %>>
                 <label for="in_gym">In Gym?</label>
                 <input class="form-control" type="text" name="in_gym" value=<%=pokemon.in_gym %>>
             </div>
-            <select class="trainers">
+            <select class="trainers" id='trainersMenu'>
                <%
                    for (var i = 0; i < trainers.length; i++){
                        %><option value="<%= trainers[i].name %>"><%= trainers[i].name %><%
