@@ -8,21 +8,11 @@
         <% if (locals.pokemon) { %>
             <table class='table table-hover'>
                 <thead>
-                    <th>
-                        Id
-                    </th>
-                    <th>
-                        Name
-                    </th>
-                    <th>
-                        Trainer ID
-                    </th>
-                    <th>
-                        Combat Power
-                    </th>
-                    <th>
-                        In Gym?
-                    </th>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Trainer ID</th>
+                    <th>Combat Power</th>
+                    <th>In Gym?</th>
                 </thead>
                 <tbody>
                     <% for(var i=0; i<pokemon.length; i++) { %>
@@ -50,11 +40,14 @@
                             <td>
                                 <a class='btn btn-danger' href="/pokemon/<%= pokemon[i].id %>/delete">Delete</a>
                             </td>
+                            <td>
+                              <% if (pokemon[i].in_gym) {%>
+                              <a class='btn btn-primary' href="/pokemon/remove/<%= pokemon[i].id %>">Remove from gym</a>
+                              <% } else { %>
+                              <a class='btn btn-primary' href="/pokemon/assign/<%= pokemon[i].id %>">Assign to gym</a>
+                            <% } %>
                         </tr>
                         <% } %>
                 </tbody>
             </table>
             <% } %>
-                </body>
-
-                </html>

@@ -26,17 +26,21 @@ router.get('/:id', function(req,res,next){
 router.get('/:id/edit', function(req,res,next){
   Pokemon.show(req.params.id).then(function(pokemon){
     Pokemon.displayTrainer(pokemon.rows[0].trainer_id).then(function(trainer){
-    Pokemon.showTrainers().then(function(trainers){
+      Pokemon.showTrainers().then(function(trainers){
       res.render('pokemon/edit', {pokemon: pokemon.rows[0], trainer: trainer.rows[0], trainers: trainers.rows})
       })
     })
   })
 })
 router.post('/:id', function(req, res, next) {
+  console.log('*******************');
+  console.log(req.body.trainers_names);
   Pokemon.edit(req.params.id, req.body).then(function(){
-    Pokemon.show(req.params.id).then(function(pokemon){
-      Pokemon.displayTrainer(pokemon.rows[0].trainer_id).then(function(trainer){
-        res.render('pokemon/show', {pokemon: pokemon.rows[0], trainer: trainer.rows[0]})
+    Pokemon.editTrainer(req.params.id, req.body.trainers_names).then(function(){
+      Pokemon.show(req.params.id).then(function(pokemon){
+        Pokemon.displayTrainer(pokemon.rows[0].trainer_id).then(function(trainer){
+          res.render('pokemon/show', {pokemon: pokemon.rows[0], trainer: trainer.rows[0]})
+        })
       })
     })
   })
@@ -46,5 +50,18 @@ router.get('/:id/delete', function(req,res,next){
     res.redirect('/pokemon')
   })
 })
-
+router.get('/assign/:id', function(req,res,next){
+  if(!res.cookie.p1) {
+    res.cookie('p1', req.params.id);
+      res.redirect('/');
+  } else if(!res.cookie.p2){
+    res.cookie('p2', req.params.id);
+    res.redirect('/pokemon')
+    }
+  })
+router.get('/remove/:id', function(req,res,next){
+  if(res.cookie.p1 === req.params.id || res.cookie.p2 === req.params.id){
+    res.clearCookie()
+  }
+})
 module.exports = router;
