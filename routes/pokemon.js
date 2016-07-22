@@ -60,8 +60,10 @@ router.get('/:id/assign', function(req,res,next){
     })
   })
   router.post('/join/:player', function(req,res,next){
-    Pokemon.gymStatus(req.body.id, 'true').then(function(){
-      res.cookie(req.params.player, req.body.id);
+    console.log('*************');
+    console.log(req.body.pokemonid);
+    Pokemon.gymStatus(req.body.pokemonid, 'true').then(function(){
+      res.cookie(req.params.player, req.body.pokemonid);
       res.redirect('/gym');
     })
   })
