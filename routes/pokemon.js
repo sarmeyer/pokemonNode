@@ -6,7 +6,7 @@ var Pokemon = require('../lib/queries');
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   Pokemon.all().then(function(pokemon){
-    res.render('pokemon/index', {pokemon: pokemon.rows});
+    res.render('pokemon/index', {pokemon: pokemon.rows, p1: req.cookies.p1, p2: req.cookies.p2});
   })
 })
 router.get('/new', function(req,res,next){
@@ -52,23 +52,20 @@ router.get('/:id/delete', function(req,res,next){
 router.get('/assign/:id', function(req,res,next){
   if(req.cookies.p1) {
     res.cookie('p2', req.params.id);
-    Pokemon.joinGym(req.params.id).then(function(){
+    Pokemon.gymStatus(req.params.id, 'true').then(function(){
       res.redirect('/');
     })
     } else {
     res.cookie('p1', req.params.id);
-    Pokemon.joinGym(req.params.id).then(function(){
+    Pokemon.gymStatus(req.params.id, 'true').then(function(){
       res.redirect('/');
       })
     }
   })
-router.get('/remove/:id', function(req,res,next){
-  if(req.cookies.p1 === req.params.id || req.cookies.p2 === req.params.id){
-  Pokemon.leaveGym(req.params.id).then(function(req,res,next){
-    res.clearCookie();
-    res.redirect('/')
+router.post('/remove/:id', function(req,res,next){
+    Pokemon.gymStatus(req.params.id, 'false').then(function(req,res,next){
+          res.redirect('/')
     })
-  }
 })
 
 module.exports = router;

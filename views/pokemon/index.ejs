@@ -17,23 +17,15 @@
                 <tbody>
                     <% for(var i=0; i<pokemon.length; i++) { %>
                         <tr>
-                            <td>
-                                <%= pokemon[i].id %>
-                            </td>
+                            <td><%= pokemon[i].id %></td>
                             <td>
                                 <a href='/pokemon/<%= pokemon[i].id %>'>
                                     <%= pokemon[i].name %>
                                 </a>
                             </td>
-                            <td>
-                                <%= pokemon[i].trainer_id %>
-                            </td>
-                            <td>
-                                <%= pokemon[i].cp %>
-                            </td>
-                            <td>
-                                <%= pokemon[i].in_gym %>
-                            </td>
+                            <td><%= pokemon[i].trainer_id %></td>
+                            <td><%= pokemon[i].cp %></td>
+                            <td><%= pokemon[i].in_gym %></td>
                             <td>
                                 <a class='btn btn-success' href="/pokemon/<%= pokemon[i].id %>/edit">Edit</a>
                             </td>
@@ -41,9 +33,11 @@
                                 <a class='btn btn-danger' href="/pokemon/<%= pokemon[i].id %>/delete">Delete</a>
                             </td>
                             <td>
-                              <% if (pokemon[i].in_gym) {%>
+                              <% if (p1 === pokemon[i].id) {%>
                               <a class='btn btn-primary' type='submit' href="/pokemon/remove/<%= pokemon[i].id %>">Remove from gym</a>
-                              <% } else { %>
+                              <% } else if (p2 === pokemon[i].id){ %>
+                                <a class='btn btn-primary' type='submit' href="/pokemon/remove/<%= pokemon[i].id %>">Remove from gym</a>
+                                <%  } else if (!(p1 && p2)) {%>
                               <a class='btn btn-primary' type='submit' href="/pokemon/assign/<%= pokemon[i].id %>">Assign to gym</a>
                             <% } %>
                         </tr>
