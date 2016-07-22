@@ -1,0 +1,18 @@
+<%- contentFor('body') %>
+
+<h1>Showing <%= trainer.name %></h1>
+  <% if(locals.trainer) { %>
+    <div class="well well-lg">
+      Id: <h2><%= trainer.id %></h2>
+      Name: <h2><%= trainer.name %></h2>
+      Pokemon:
+      <select class="pokemon" name='pokemon_names'>
+          <%
+          for (var i = 0; i < pokemon.length; i++){
+            %><option value="<%= pokemon[i].name %>"><%= pokemon[i].name %><%
+            }
+            %>
+          </select>
+      <a class='btn btn-success' href="/trainer/<%= trainer.id %>/edit">Edit</a> | <a class='btn btn-danger' href="/trainer/<%= trainer.id %>/delete">Delete</a>
+    </div>
+    <% } %>
