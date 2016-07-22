@@ -1,8 +1,9 @@
 <!-- DO NOT TOUCH LINE 3 ! This imports our HTML layout-->
 <!-- Everything below line 3 feel free to delete and or build on. This is just sample data -->
 <%- contentFor('body') %>
-
-    <div>
+<main class='main'>
+  
+    <div class='trainer_table'>
         <h1>Showing All Trainers</h1>
         <a class='btn btn-primary' href="/trainers/new">Add a New Trainer</a>
         <% if (locals.trainers) { %>
@@ -27,3 +28,5 @@
                 </tbody>
             </table>
             <% } %>
+        </div>
+      </main>

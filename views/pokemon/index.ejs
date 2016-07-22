@@ -2,11 +2,11 @@
 <!-- Everything below line 3 feel free to delete and or build on. This is just sample data -->
 <%- contentFor('body') %>
 
-    <div>
-        <h1>Showing All Pokemon</h1>
-        <a class='btn btn-primary' href="/pokemon/new">Add a New Pokemon</a>
+    <div class='pokemon_table'>
+        <h2>Showing All Pokemon</h2>
+        <a id='new' class='btn' href="/pokemon/new">Add a New Pokemon</a>
         <% if (locals.pokemon) { %>
-            <table class='table table-hover'>
+            <table class='table table-inverse'>
                 <thead>
                     <th>Id</th>
                     <th>Name</th>

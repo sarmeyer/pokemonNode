@@ -2,5 +2,45 @@
   color: red;
 }
 .gym {
-  color: rgb(244, 243, 195);
+  background-color: rgb(246, 240, 228);
+  padding: 13px;
+  color: black;
+  width: 25vw;
+  height: 33vw;
+  text-align: center;
+  border-radius: 25px;
+}
+.trainer_table {
+  background-color: rgb(246, 240, 228);
+  color: black;
+  padding: 13px;
+  width: 40vw;
+  height: 60vh;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 5vw;
+  font-size: 1.5em;
+  border-radius: 25px;
+}
+.pokemon_table {
+  background-color: rgb(246, 240, 228);
+  color: black;
+  height: 93vh;
+  padding: 13px;
+  margin-top: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.2em;
+  margin-bottom: 6px;
+  border-radius: 25px;
+}
+.pokemon_table input {
+  color: black;
+}
+#new{
+margin-bottom: 20px;
+font-size: 1.5em;
 }
