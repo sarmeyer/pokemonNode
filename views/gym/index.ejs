@@ -4,7 +4,7 @@
     <h1>GYM</h1>
     <div class="P1">
       <% if(p1 === p2) { %>
-      <h1>A Pokemón cannot fight itself! Please choose a different Pokemón!</h1>
+      <h1 class='alert'>A Pokemón cannot fight itself! Please choose a different Pokemón!</h1>
       <% } %>
         <h2>Pokemon 1</h2>
         <% if(poke1) { %>
@@ -38,18 +38,27 @@
                     </form>
                 <% } %>
             </div>
+            <% if(p1 && p2){ %>
             <div id="prebattle">
-                <a id='battle' class='btn btn-success' href="/gym/battle">Battle!</a>
+                <button type='button' class='btn btn-success' id='battle'>Battle!</button>
+                <button type='button' class='btn btn-danger' id='reset'>Reset Pokemon</button>
             </div>
+            <% } %>
             <div id="winner">
-                <h1><%= pokemon.name %>
-                    is the Winner!</h1>
+              <% if(poke1.cp > poke2.cp) {%>
+                <h1><%= poke1.name %> is the Winner!</h1>
+                <% } else { %>
+                  <h1><%= poke2.name %> is the Winner!</h1>
+                  <% } %>
             </div>
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
         <script>
-            $(document).ready(function(p1) {
+            $(document).ready(function(p1, p2) {
+              $('#reset').on('click', function(){
+                window.location.href = '/gym/reset';
+              })
                 $('#winner').hide();
                 $('#battle').on('click', function() {
                     $('#winner').show();
