@@ -21,4 +21,9 @@ router.get('/', function(req, res, next) {
       res.render('gym/index', {pokemon: pokemon.rows, poke1: poke1, poke2: poke2, p1:p1, p2:p2})
     })
 })
+router.get('/reset', function(req,res,send){
+  res.clearCookie('p1');
+  res.clearCookie('p2');
+  res.redirect('/gym');
+})
 module.exports = router;

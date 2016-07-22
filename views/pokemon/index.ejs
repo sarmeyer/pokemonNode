@@ -34,11 +34,11 @@
                             </td>
                             <td>
                               <% if (p1 === pokemon[i].id) {%>
-                              <a class='btn btn-primary' type='submit' href="/pokemon/remove/<%= pokemon[i].id %>">Remove from gym</a>
+                              <a class='btn btn-primary' type='submit' href="/pokemon/<%= pokemon[i].id %>/remove">Remove from gym</a>
                               <% } else if (p2 === pokemon[i].id){ %>
-                                <a class='btn btn-primary' type='submit' href="/pokemon/remove/<%= pokemon[i].id %>">Remove from gym</a>
+                                <a class='btn btn-primary' type='submit' href="/pokemon/<%= pokemon[i].id %>/remove">Remove from gym</a>
                                 <%  } else if (!(p1 && p2)) {%>
-                              <a class='btn btn-primary' type='submit' href="/pokemon/assign/<%= pokemon[i].id %>">Assign to gym</a>
+                              <a class='btn btn-primary' type='submit' href="/pokemon/<%= pokemon[i].id %>/assign">Assign to gym</a>
                             <% } %>
                         </tr>
                         <% } %>
