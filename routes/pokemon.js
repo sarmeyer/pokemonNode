@@ -61,12 +61,8 @@ router.get('/:id/assign', function(req,res,next){
   })
   router.post('/join/:player', function(req,res,next){
     Pokemon.gymStatus(req.body.pokemonid, 'true').then(function(){
-      if(req.body.pokemonid !== Number(req.cookies.p1) && req.body.pokemonid !== Number(req.cookies.p2)){
-        res.cookie(req.params.player, req.body.pokemonid);
-        res.redirect('/gym');
-    } else {
-      res.render('gym/index', {alert: "A Pokemón cannot fight itself! Please choose a different Pokemón!"})
-      }
+      res.cookie(req.params.player, req.body.pokemonid);
+      res.redirect('/gym');
     })
   })
 router.post('/:id/remove/:player', function(req,res,next){

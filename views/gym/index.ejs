@@ -3,8 +3,8 @@
 <div class='gym'>
     <h1>GYM</h1>
     <div class="P1">
-      <% if(locals.alert) { %>
-      <h1><%= alert %></h1>
+      <% if(p1 === p2) { %>
+      <h1>A Pokemón cannot fight itself! Please choose a different Pokemón!</h1>
       <% } %>
         <h2>Pokemon 1</h2>
         <% if(poke1) { %>
