@@ -1,21 +1,66 @@
 <%- contentFor('body') %>
 
-    <div>
+    <div class='gym'>
         <h1>GYM</h1>
         <% if (locals.pokemon) { %>
-        Pokemon 1 <select class="pokemon" name='pokemon_names'>
+        <div class="P1">
+        <h2>Pokemon 1</h2>
+          <h3 id='pokemon1Name'> <%= pokemon.name %></h3>
+          <select id="pokemon1" name='pokemon_menu'>
                 <% for (var i = 0; i < pokemon.length; i++){ %>
                     <option value="<%= pokemon[i].name %>">
                         <%= pokemon[i].name %>
                             <% } %>
-        Pokemon 2 </select>
+              </select>
+              <a id='join1' class='btn btn-success' href="gym/join">Add Pokemon to gym!</a>
+        </div>
+        <div class="P2">
             <h2>Pokemon 2</h2>
-            <select class="pokemon" name='pokemon_names'>
+            <h3 id='pokemon2Name'> <%= pokemon.name %></h3>
+            <select id="pokemon2" name='pokemon_menu'>
                 <% for (var i = 0; i < pokemon.length; i++){ %>
                     <option value="<%= pokemon[i].name %>">
                         <%= pokemon[i].name %>
                             <% } %>
             </select>
-            <a class='btn btn-success' href="#">Battle!</a>
+            <a id='join2' class='btn btn-success' href="/gym/join">Add Pokemon to gym!</a>
+          </div>
+          <div id="prebattle">
+            <a id='battle' class='btn btn-success' href="/gym/battle">Battle!</a>
+          </div>
+          <div id="winner">
+            <h1><%= pokemon.name %> is the Winner!</h1>
+          </div>
+          <% } %>
     </div>
-    <% } %>
+
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(poke1) {
+      $('#winner').hide();
+      if(poke1){
+        $("#pokemon1Name").show();
+        $('#pokemon1').hide();
+        $('#join1').hide();
+      }else{
+        $("#pokemon1Name").hide();
+        $("#pokemon1").show();
+        $('#join1').show();
+      }
+    });
+    $(document).ready(function(poke2) {
+     if(poke2){
+       $("#pokemon2Name").show();
+       $("#pokemon2").hide();
+       $('#join2').hide();
+       }else{
+         $("#pokemon2Name").hide();
+         $("#pokemon2").show();
+         $('#join2').show();
+       }
+     });
+     $('#battle').on('click', function(){
+       $('#winner').show();
+     })
+    </script>

@@ -14,11 +14,9 @@
                 <label for="in_gym">In Gym?</label>
                 <input class="form-control" type="text" name="in_gym" value=<%=pokemon.in_gym %>>
                 <select class="trainers" name='trainers_names'>
-                  <%
-                  for (var i = 0; i < trainers.length; i++){
-                    %><option value="<%= trainers[i].name %>"><%= trainers[i].name %><%
-                    }
-                    %>
+                  <% for (var i = 0; i < trainers.length; i++){ %>
+                    <option value="<%= trainers[i].name %>"><%= trainers[i].name %>
+                      <% } %>
                   </select>
             </div>
             <button class="btn btn-primary" type="submit">Submit!</button>
