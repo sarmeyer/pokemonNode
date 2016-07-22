@@ -1,0 +1,21 @@
+<%- contentFor('body') %>
+
+    <div>
+        <h1>GYM</h1>
+        <% if (locals.pokemon) { %>
+        Pokemon 1 <select class="pokemon" name='pokemon_names'>
+                <% for (var i = 0; i < pokemon.length; i++){ %>
+                    <option value="<%= pokemon[i].name %>">
+                        <%= pokemon[i].name %>
+                            <% } %>
+        Pokemon 2 </select>
+            <h2>Pokemon 2</h2>
+            <select class="pokemon" name='pokemon_names'>
+                <% for (var i = 0; i < pokemon.length; i++){ %>
+                    <option value="<%= pokemon[i].name %>">
+                        <%= pokemon[i].name %>
+                            <% } %>
+            </select>
+            <a class='btn btn-success' href="#">Battle!</a>
+    </div>
+    <% } %>
