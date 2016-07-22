@@ -60,17 +60,19 @@ router.get('/:id/assign', function(req,res,next){
     })
   })
   router.post('/join/:player', function(req,res,next){
-    console.log('*************');
-    console.log(req.body.pokemonid);
     Pokemon.gymStatus(req.body.pokemonid, 'true').then(function(){
-      res.cookie(req.params.player, req.body.pokemonid);
-      res.redirect('/gym');
+      if(req.body.pokemonid !== Number(req.cookies.p1) && req.body.pokemonid !== Number(req.cookies.p2)){
+        res.cookie(req.params.player, req.body.pokemonid);
+        res.redirect('/gym');
+    } else {
+      res.render('gym/index', {alert: "A Pokemón cannot fight itself! Please choose a different Pokemón!"})
+      }
     })
   })
 router.post('/:id/remove/:player', function(req,res,next){
-    Pokemon.gymStatus(req.params.id, 'false').then(function(req,res,next){
-        res.clearCookie(req.params.player);
-          res.redirect('/')
+  res.clearCookie(req.params.player);
+    Pokemon.gymStatus(req.params.id, 'false').then(function(){
+        res.redirect('/')
     })
 })
 

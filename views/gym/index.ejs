@@ -3,10 +3,12 @@
 <div class='gym'>
     <h1>GYM</h1>
     <div class="P1">
+      <% if(locals.alert) { %>
+      <h1><%= alert %></h1>
+      <% } %>
         <h2>Pokemon 1</h2>
         <% if(poke1) { %>
-            <h3>
-                <%= poke1.name %></h3>
+            <h3><%= poke1.name %></h3>
         <% } else { %>
             <form action="/pokemon/join/p1" method="post">
                 <select name='pokemonid'>
@@ -21,7 +23,7 @@
         </div>
         <div class="P2">
             <h2>Pokemon 2</h2>
-            <% if(poke2) { %>
+            <% if(poke2 && poke2 !== poke1) { %>
                 <h3>
                     <%= poke2.name %></h3>
             <% } else { %>
