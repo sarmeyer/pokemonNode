@@ -4,7 +4,7 @@ module.exports = {
 
   development: {
     client: 'pg',
-    connection: 'postgres://localhost/pokemon-node'
+    connection: process.env.LOCAL_DATABASE_URL
   },
   production: {
     client: 'pg',
