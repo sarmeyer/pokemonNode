@@ -1,22 +1,15 @@
+
 **HEROKU URL**
 https://pokemon-node-meyer.herokuapp.com/
 
 
 ![](https://github.com/gSchool/pokemon-node/blob/master/public/images/pokemon-logo.png)
 
-## WELCOME to the Q2 Assessment!
-
-Move deliberately and methodically through the stories provided below.
-
-__Stay calm and code on!__
-
 ## Assessment Overview
 
 **Pokemón Node** is an app where a user can manage trainers and their corresponding
 Pokemón to battle in a gym. Users should be able to READ, UPDATE, and DELETE Pokemón,
 as well as assign Pokemón to the gym (details below).
-
-Your app should look at _least_ as good as the wireframes, preferably better.
 
 If you want to use session variables instead of cookies, that is fine.
 
